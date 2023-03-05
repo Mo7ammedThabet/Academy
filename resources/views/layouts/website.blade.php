@@ -41,8 +41,8 @@
 				</div>
 				<div class="col-header-right">
 					<ul class="head-menu clearfix">
-						<li><a href="#">Sign up</a></li>
-						<li><a href="#">Sign in</a></li>
+						<li><a href="{{ route('register') }}">Sign up</a></li>
+						<li><a href="{{ route('login') }}">Sign in</a></li>
 						<li class="focus-line"><a href="#">lineKW</a></li>
 					</ul>
 					<div id="menu_bars" class="right hidden visible-xs">
