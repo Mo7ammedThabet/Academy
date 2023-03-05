@@ -1,0 +1,86 @@
+@media screen and (max-width: 1199px) {}
+@media screen and (max-width: 991px) {
+	.head-menu > li{
+		margin-right: 15px;
+	}
+}
+@media screen and (max-width: 767px) {
+	.book-now{
+		min-width: 140px;
+		padding: 10px;
+		height: 45px;
+		line-height: 22px;
+	}
+	.cour-salary{
+		padding: 8px 18px;
+		font-size: 14px;
+	}
+	.c-tags{
+		font-size: 14px;
+	}
+	.head-menu{
+		display: none;
+	}
+	#header{
+		padding: 10px 0;
+	}
+	.title_inner,.share-course h3{
+		font-size: 20px;
+	}
+	#slide-course .owl-nav > div{
+		width: 35px;
+		height: 35px;
+	}
+	.txt-description{
+		font-size: 16px;
+	}
+	.comment-item{
+		padding: 20px;
+	}
+	.comment-item > h3{
+		font-size: 16px;
+	}
+	.comment-footer{
+		padding: 20px;
+	}
+	.center-screen{
+		width: 100%;
+	}
+	.overlay-close{
+		width: 50px;
+		height: 50px;
+	}
+	.overlay-close:before, .overlay-close:after{
+		width: 35px;
+	}
+	.btn-contact{
+		height: 50px;
+		margin-top: 20px;
+	}
+	.section-content-innerPage{
+		padding-bottom: 30px;
+	}
+}
+
+@media screen and (max-width: 550px) {
+	.box-form-layout{
+		width: 100%;
+		padding: 50px 20px 50px;
+	}
+	
+	
+}
+@media screen and (max-width: 400px) {
+	.book-now{
+		float: none;
+		display: block;
+	}
+	.cb-left{
+		float: none;
+	}
+	.cb-right{
+		float: none;
+		display: inline-block;
+		margin-top: 8px;
+	}
+}

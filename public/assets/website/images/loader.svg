@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 22.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 64 64" style="enable-background:new 0 0 64 64;" xml:space="preserve">
+<style type="text/css">
+	.st0{opacity:0.3;}
+	.st1{fill:#010002;}
+</style>
+<title>loader</title>
+<desc>Created with Sketch.</desc>
+<g id="Page-1" class="st0">
+	<g id="loader">
+		<g id="loading-process-_x28_1_x29_" transform="translate(10.000000, 10.000000)">
+			<path id="Shape" class="st1" d="M10.3,19.7H0v5.7h10.3V19.7z M19.7,45h5.7V34.7h-5.7V45z M34.7,19.7v5.7H45v-5.7H34.7z
+				 M19.7,10.3h5.7V0h-5.7V10.3z M4.6,36.4l4,4l7.2-7.3l-4-4L4.6,36.4z M4.6,8.6l7.2,7.2l4-4L8.6,4.6L4.6,8.6z M29.1,33.2l7.2,7.2
+				l4-4l-7.3-7.3L29.1,33.2z"/>
+		</g>
+	</g>
+</g>
+</svg>

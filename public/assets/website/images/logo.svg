@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="5304.539" height="673.665" viewBox="0 0 5304.539 673.665">
+  <g id="logo" transform="translate(-37.308 -539.121)">
+    <path id="Path_9" data-name="Path 9" d="M679.755,410.293V302.729s-253.66-31.881-423.6-107.563S0,0,0,0,81.781,165.78,251.72,268.353,679.755,410.293,679.755,410.293Z" transform="matrix(-0.995, 0.105, -0.105, -0.995, 868.804, 1141.732)" fill="#fff"/>
+    <path id="Path_8" data-name="Path 8" d="M679.755,0V107.563s-253.66,31.881-423.6,107.563S0,410.292,0,410.292s81.781-165.78,251.72-268.353S679.755,0,679.755,0Z" transform="matrix(0.995, 0.105, -0.105, 0.995, 920.668, 728.066)" fill="#fff"/>
+    <path id="Path_7" data-name="Path 7" d="M0,0S151.8,145.4,338.826,216.6s409.29,110.179,409.29,68.215V153.261s-112.63,38.315-299.659,0S0,0,0,0Z" transform="translate(868.804 1133.411) rotate(177)" fill="#fff"/>
+    <path id="Path_6" data-name="Path 6" d="M0,302.1S151.8,156.7,338.826,85.5s409.29-110.179,409.29-68.215V148.842s-112.63-38.315-299.658,0S0,302.1,0,302.1Z" transform="translate(884.615 831.722) rotate(3)" fill="#fff"/>
+    <path id="Path_1" data-name="Path 1" d="M1287.893,546.126V305.385H180.769V546.126" transform="translate(134.473 253.737)" fill="none" stroke="#008fd5" stroke-linejoin="round" stroke-width="40"/>
+    <path id="Path_2" data-name="Path 2" d="M863.8,939.47s-51.991-66.141-272.168-115.325C397.768,780.837,32.308,750.465,32.308,792.43V916.4s185.674-70.637,393.548-64.871S863.8,939.47,863.8,939.47Z" transform="translate(5 195.239)" fill="#fff"/>
+    <path id="Path_3" data-name="Path 3" d="M32.308,939.47S84.3,873.328,304.476,824.144C498.344,780.837,863.8,750.465,863.8,792.43V916.4S678.13,845.768,470.256,851.534,32.308,939.47,32.308,939.47Z" transform="translate(836.496 195.239)" fill="#fff"/>
+    <text id="OnlineAcademy" transform="translate(1806.847 1021)" fill="#008fd5" font-size="459" font-family="KristenITC-Regular, Kristen ITC"><tspan x="0" y="0">Online</tspan><tspan y="0" fill="#fff">Academy</tspan></text>
+  </g>
+</svg>

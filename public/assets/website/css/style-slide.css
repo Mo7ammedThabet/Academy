@@ -1,0 +1,190 @@
+/* table of contents */
+/*
++ General Styling and Tags
+*body
++ @font-face
+
++ #home
+  - .navbar
+  - #slider
+
+/*+ General Styling and Tags*/
+/**body*/
+
+
+/*default styling start*/
+/* Global Styling */
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,200italic,200,100,100italic,300,300italic,400italic,500,500italic,600,600italic,700,700italic,800);
+/* font-family: 'Raleway', sans-serif; */
+/* ============= background colors classes */
+.blue-background{
+    background: #0e2b3a !important;
+}
+.dark-gray
+{
+    background: #2f2f2f !important;
+}
+
+/* ============= background colors classes end */
+.fade {
+    -webkit-transition: opacity 500ms linear !important;
+    transition: opacity 500ms linear !important;
+}
+
+
+
+
+/*Slider styling start */
+video{
+    position: absolute;
+    bottom: 0%;
+    left: 0%;
+    z-index: -100;
+}
+.parallax-bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 130%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+}
+#home .swiper-container {
+    width: 100%;
+    height: 100vh;
+}
+#home .swiper-container .section-top-heading{
+    margin-bottom: 0;
+}
+#home .swiper-container .section-top-heading > *{
+    color: #ffffff;
+}
+#home .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    background-size: cover !important;
+    color: #ffffff;
+
+}
+#home .swiper-container .slider-content.left{
+    text-align: left;
+}
+#home .swiper-container .slider-content.right{
+    text-align: right;
+}
+#home .swiper-container .swiper-button-next ,#home .swiper-container .swiper-button-prev{
+    color: #ffffff;
+    background: rgba(0, 0, 0, 0.5) none;
+    width: 40px;
+    height: 40px;
+    font-size: 27px;
+    -webkit-transition: all linear 300ms;
+    transition: all linear 300ms;
+    border-radius: 5px;
+
+}
+#home .swiper-container .swiper-button-next:hover ,#home .swiper-container .swiper-button-prev:hover{
+    background: #ffffff;
+    color: #1b1b1b;
+}
+#home .swiper-container i{
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    left: 15px;
+}
+#home .swiper-slide .buttons-group{
+    margin-top: 30px;
+}
+#home .swiper-slide h2 span{
+    font-weight: 300;
+    font-size: 58px;
+
+}
+#home .swiper-slide h2 span:nth-child(2){
+    padding-left: 8px;
+}
+#home .swiper-slide .button{
+    border: 2px solid;
+    border-radius: 4px;
+}
+#home .swiper-slide .button.normal{
+    border-color:  #ffffff;
+    margin-right: 20px;
+}
+#home .swiper-slide .button.special{
+}
+#home .swiper-slide .button.special:hover{
+    border-color: #ffffff;
+    color: #1b1b1b;
+}
+#home .swiper-slide .button:before{
+    background: #ffffff;
+
+}
+
+
+/*for index4 page only start*/
+.swiper-slide .button.special{
+    background: #FFFFFF;
+    border-color:  #FFFFFF;
+    color: #1b1b1b;
+}
+.swiper-slide .button.special:before {
+    background: #85d0ce;
+}
+.swiper-slide .button.special:hover{
+    color: #FFFFFF;
+    border-color:  #85d0ce;
+}
+
+@media screen and (max-width: 767px) {
+    #home .swiper-container{
+        height: 400px;
+    }
+    #home .swiper-slide h2{
+        font-size: 26px;
+    }
+    #home .swiper-slide h2 span{
+        font-size: 32px;
+    }
+    #home .swiper-slide .slider-content.left{
+        text-align: center;
+    }
+}
+
+/*for index4 page only end*/
+
+/*Slider styling end */
+
+/*.swiper-slide{
+    position: relative;
+}*/
+.swiper--img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    z-index: -1;
+    opacity: 0.2;
+}
+
+.swiper--img > img {
+    width: 100%;
+    height: 100%;
+}
