@@ -38,6 +38,16 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'title' => 'required',
+            'image' => 'required',
+            'time_course' => 'required',
+            'description' => 'required',
+            'price' => 'required',
+            'date' => 'required',
+        ]);
+        Course::create($request->all());
+        return redirect()->route('course')->with('success', 'Course created successfully.');
 
     }
 
@@ -50,7 +60,7 @@ class CourseController extends Controller
      */
     public function show(Course $course)
     {
-        //
+        return view('auth.course.show', ['course'=>$course]);
     }
 
     /**
@@ -61,7 +71,7 @@ class CourseController extends Controller
      */
     public function edit(Course $course)
     {
-        //
+        return view('auth.course.edit', ['course'=>$course]);
     }
 
     /**
@@ -73,7 +83,16 @@ class CourseController extends Controller
      */
     public function update(Request $request, Course $course)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'image' => 'required',
+            'time_course' => 'required',
+            'description' => 'required',
+            'price' => 'required',
+            'date' => 'required',
+        ]);
+        $course->update($request->all());
+        return redirect()->route('course.index')->with('success', 'Course updated successfully.');
     }
 
     /**
@@ -84,6 +103,8 @@ class CourseController extends Controller
      */
     public function destroy(Course $course)
     {
-        //
+        $course->delete();
+
+        return redirect()->route('course.index')->with('success', 'Course deleted successfully.');
     }
 }

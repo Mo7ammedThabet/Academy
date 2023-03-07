@@ -39,7 +39,7 @@
                         @csrf
                       <div class="form-group">
                         <label for="exampleInputName1">Title</label>
-                        <input type="text" name="title" class="form-control" id="exampleInputName1" placeholder="Title" value="{{ old('title') }}" required>
+                        <input type="text" name="title" class="form-control" id="title" placeholder="Title" value="{{ old('title') }}" required>
                       </div>
                       <div class="form-group">
                         <label for="exampleInputName1">Price</label>
@@ -47,7 +47,7 @@
                           <div class="input-group-prepend">
                             <span class="input-group-text bg-gradient-primary text-white">$</span>
                           </div>
-                          <input  type="number" name="Price" class="form-control" aria-label="Amount (to the nearest dollar)">
+                          <input  type="number" name="price" id="price" class="form-control" aria-label="Amount (to the nearest dollar)">
                           <div class="input-group-append">
                             <span class="input-group-text">.00</span>
                           </div>
@@ -56,25 +56,25 @@
                       <div class="form-group">
                           <label class="col-sm-3 col-form-label">Date of Course</label>
                           <div class="col-sm-9">
-                            <input class="form-control" type="date" placeholder="dd/mm/yyyy" />
+                            <input class="form-control" name="date" type="date" placeholder="dd/mm/yyyy" />
                           </div>
                       </div>
                       <div class="form-group">
                         <label class="col-sm-3 col-form-label">Time of Course</label>
                         <div class="col-sm-9">
-                          
-                          <input class="form-control" type="time"   placeholder="H:M" />
+
+                          <input class="form-control" type="time" name="time_course" id="time_course"   placeholder="H:M" />
                         </div>
                     </div>
 
                       <div class="form-group">
                         <label>Image upload</label>
-                        <input type="file" name="file" class="form-control"  required>
+                        <input type="file" name="image"  id="image" class="form-control"  required>
                       </div>
 
                       <div class="form-group">
                         <label>Description</label>
-                        <textarea id="summernote" name="description" class="form-control" cols="30" rows="10" required >{{old('description')}}</textarea>
+                        <textarea id="description" name="description" class="form-control" cols="30" rows="10" required >{{old('description')}}</textarea>
                       </div>
                       <button type="submit" class="btn btn-gradient-primary me-2">Submit</button>
                     </form>

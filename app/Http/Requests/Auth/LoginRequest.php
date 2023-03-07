@@ -39,7 +39,7 @@ class LoginRequest extends FormRequest
 
     // }
 
-    public function rules(): array
+    public function rules(Request $request): array
     {
         $input = $request->all();
         return [
@@ -50,7 +50,7 @@ class LoginRequest extends FormRequest
         if(auth()->attempt(array('email' => $input['email'], 'password' => $input['password'])))
         {
             if (auth()->user()->type == 'trainer') {
-                return redirect()->route('dashboard');
+                return redirect()->route('auth.dashboard');
             }else{
                 return redirect()->route('home');
             }

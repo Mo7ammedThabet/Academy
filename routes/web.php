@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/home', function () {
+Route::get('/', function () {
     return view('website.blog.index');
 });
 Route::view('contact-us','website.contact')->name('contact');
@@ -25,10 +25,7 @@ Route::view('contact-us','website.contact')->name('contact');
 
 /*  User Routes List */
 
-Route::middleware(['auth', 'user-access:user'])->group(function () {
 
-    Route::get('/', function () {return view('website.blog.index');});
-});
 
 
 

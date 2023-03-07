@@ -23,17 +23,18 @@
                     <div class="col-lg-12 grid-margin stretch-card">
                         <div class="card">
                             <div class="card-body">
-                                {{-- @if( count($course) > 0)    --}}
+                                @if( count($courses) > 0)
                                 <h4 class="card-title">Courses</h4>
 
                                     <table id="posts-table" class="table table-striped">
                                         <thead>
-                                        <tr>Title
+                                        <tr>
                                             <th> Title </th>
                                             <th> Image </th>
                                             <th> price </th>
-                                            <th>time_course</th>
+                                            <th>description</th>
                                             <th> date </th>
+                                            <th>time_course</th>
                                             <th> Action </th>
                                         </tr>
                                         </thead>
@@ -41,14 +42,17 @@
                                           @foreach($courses  as $course )
                                               <tr>
                                                   <td class="py-1">
-                                                      <img src="{{ $course->gallery->image}}" style="width: 100px; height:90%  " alt="image" />
+                                                      <img src="{{ $course->title}}" style="width: 100px; height:90%  " alt="image" />
                                                   </td>
-                                                  <td> {{ $course->title }} </td>
+                                                  <td> {{ $course->image}} </td>
+
+                                                  <td> {{$course->price}} </td>
                                                   <td>
-                                                      {!! Str::limit($course->description, 15) !!}
-                                                  </td>
-                                                  <td> {{$course->category->name}} </td>
-                                                  <td> {{$course->is_publish ==1 ? 'Published' : 'Draft'}} </td>
+                                                    {!! Str::limit($course->description, 15) !!}
+                                                </td>
+                                                  <td> {{$course->date}} </td>
+                                                  <td> {{$course->time_course}} </td>
+
                                                   <td>
                                                       <a href="" class="btn btn-sm btn-success"><i class="fas fa-eye"></i></a>
                                                       <a href="" class="btn btn-sm btn-info"><i class="fas fa-edit"></i></a>
@@ -58,9 +62,9 @@
                                           @endforeach
                                         </tbody>
                                     </table>
-                                {{-- @else --}}
+                                @else
                                    <h3 class="text-center text-danger">No posts found</h3>
-                                   {{-- @endif --}}
+                                   @endif
                             </div>
                         </div>
                     </div>
