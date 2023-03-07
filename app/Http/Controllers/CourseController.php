@@ -47,7 +47,7 @@ class CourseController extends Controller
             'date' => 'required',
         ]);
         Course::create($request->all());
-        return redirect()->route('course')->with('success', 'Course created successfully.');
+        return redirect()->route('courses.index')->with('success', 'Course created successfully.');
 
     }
 
@@ -105,6 +105,6 @@ class CourseController extends Controller
     {
         $course->delete();
 
-        return redirect()->route('course.index')->with('success', 'Course deleted successfully.');
+        return redirect()->route('courses.index')->with('success', 'Course deleted successfully.');
     }
 }

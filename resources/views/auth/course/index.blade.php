@@ -41,10 +41,12 @@
                                         <tbody>
                                           @foreach($courses  as $course )
                                               <tr>
+
+                                                <td> {{ $course->title}} </td>
                                                   <td class="py-1">
-                                                      <img src="{{ $course->title}}" style="width: 100px; height:90%  " alt="image" />
+                                                      <img src="{{ $course->image}}" style="width: 100px; height:90%  " alt="image" />
                                                   </td>
-                                                  <td> {{ $course->image}} </td>
+
 
                                                   <td> {{$course->price}} </td>
                                                   <td>
@@ -53,10 +55,20 @@
                                                   <td> {{$course->date}} </td>
                                                   <td> {{$course->time_course}} </td>
 
+                                                <td>
+                                                    <a href="{{route('courses.edit',$course->id)}}" class="btn btn-sm btn-outline-success">Edit</a>
+                                                </td>
+
                                                   <td>
-                                                      <a href="" class="btn btn-sm btn-success"><i class="fas fa-eye"></i></a>
-                                                      <a href="" class="btn btn-sm btn-info"><i class="fas fa-edit"></i></a>
-                                                      <a href="" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>
+                                                      {{-- <a href="" class="btn btn-sm btn-info"><i class="fas fa-edit"></i></a> --}}
+                                                      {{-- <a href="" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a> --}}
+                                                      <form action="{{route('courses.destroy',$course->id)}}" method="post">
+                                                        @csrf
+                                                        {{-- Form Method spoofing --}}
+                                                        <input type="hidden" name="_method" value="delete">
+                                                        @method('delete')
+                                                        <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                                        </form>
                                                   </td>
                                               </tr>
                                           @endforeach
