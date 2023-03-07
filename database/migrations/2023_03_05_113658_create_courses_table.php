@@ -17,10 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('image');
-            $table->string('icon_owner');
-            $table->string('name_owner');
             $table->time('time_course');
-            $table->float('price');
+            $table->text('description');
+            $table->integer('price');
             $table->date('date');
             $table->timestamps();
         });

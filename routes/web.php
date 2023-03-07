@@ -17,13 +17,35 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/home', function () {
     return view('website.blog.index');
+});
+Route::view('contact-us','website.contact')->name('contact');
+
+
+/*  User Routes List */
+
+Route::middleware(['auth', 'user-access:user'])->group(function () {
+
+    Route::get('/', function () {return view('website.blog.index');});
+});
+
+
+
+/*  Trainer Routes List */
+// Route::prefix('auth')->middleware(['auth'])->group(function (){
+//     Route::get('dashboard',[DashboardController::class,'dashboard'])->name('auth.dashboard');
+//      Route::resource('courses', CourseController::class);
+// });
+Route::middleware(['auth', 'user-access:trainer'])->group(function () {
+
+    Route::get('dashboard',[DashboardController::class,'dashboard'])->name('auth.dashboard');
+    Route::resource('courses', CourseController::class);
 });
 
 
 // Route::get('/', function () {
-//     return view('layouts.auth');
+//     return view('website.blog.single');
 // });
 
 
@@ -39,9 +61,12 @@ Route::middleware('auth')->group(function () {
 });
 
 
-Route::prefix('auth')->middleware(['auth'])->group(function (){
-    Route::get('dashboard',[DashboardController::class,'dashboard'])->name('auth.dashboard');
-     Route::resource('courses', CourseController::class);
-});
+// Route::get('/courses/{course}', [WebsiteController::class, 'show'])
+// ->name('courses.show');
+
+
+
+
+
 
 require __DIR__.'/auth.php';

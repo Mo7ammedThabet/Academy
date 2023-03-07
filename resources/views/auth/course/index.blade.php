@@ -11,11 +11,11 @@
         <div class="main-panel">
             <div class="content-wrapper">
                 <div class="page-header">
-                    <h3 class="page-title"> Posts </h3>
+                    <h3 class="page-title"> Courses </h3>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="#">Posts</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">All Posts</li>
+                            <li class="breadcrumb-item"><a href="#">Courses</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">All courses</li>
                         </ol>
                     </nav>
                 </div>
@@ -23,17 +23,17 @@
                     <div class="col-lg-12 grid-margin stretch-card">
                         <div class="card">
                             <div class="card-body">
-                                @if( count($course) > 0)
-                                <h4 class="card-title">Posts</h4>
+                                {{-- @if( count($course) > 0)    --}}
+                                <h4 class="card-title">Courses</h4>
 
                                     <table id="posts-table" class="table table-striped">
                                         <thead>
-                                        <tr>
-                                            <th> Image </th>
+                                        <tr>Title
                                             <th> Title </th>
-                                            <th> Description </th>
-                                            <th>Category</th>
-                                            <th> Status </th>
+                                            <th> Image </th>
+                                            <th> price </th>
+                                            <th>time_course</th>
+                                            <th> date </th>
                                             <th> Action </th>
                                         </tr>
                                         </thead>
@@ -58,9 +58,9 @@
                                           @endforeach
                                         </tbody>
                                     </table>
-                                @else
+                                {{-- @else --}}
                                    <h3 class="text-center text-danger">No posts found</h3>
-                                   @endif
+                                   {{-- @endif --}}
                             </div>
                         </div>
                     </div>

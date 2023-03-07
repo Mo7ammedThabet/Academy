@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Http\Request;
 
 class LoginRequest extends FormRequest
 {
@@ -24,19 +25,53 @@ class LoginRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\Rule|array|string>
      */
+
+    // public function login(Request $request)
+    // {
+    //     $input = $request->all();
+
+    //     $this->validate($request, [
+    //         'email' => 'required|email',
+    //         'password' => 'required',
+    //     ]);
+
+
+
+    // }
+
     public function rules(): array
     {
+        $input = $request->all();
         return [
             'email' => ['required', 'string', 'email'],
             'password' => ['required', 'string'],
         ];
+
+        if(auth()->attempt(array('email' => $input['email'], 'password' => $input['password'])))
+        {
+            if (auth()->user()->type == 'trainer') {
+                return redirect()->route('dashboard');
+            }else{
+                return redirect()->route('home');
+            }
+        }else{
+            return redirect()->route('login')
+                ->with('error','Email-Address And Password Are Wrong.');
+        }
     }
+
+
+
+
+
+
 
     /**
      * Attempt to authenticate the request's credentials.
      *
      * @throws \Illuminate\Validation\ValidationException
      */
+
     public function authenticate(): void
     {
         $this->ensureIsNotRateLimited();

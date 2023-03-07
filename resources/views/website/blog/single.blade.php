@@ -3,6 +3,53 @@
 @section('title','Single Blog')
 
 @section('content')
+<header id="header" class="header-inner">
+    <div class="container">
+        <div class="logo-site">
+            <a href="#"><img src="images/logo.svg" alt=""></a>
+        </div>
+        <div class="col-header-right">
+            <ul class="head-menu clearfix">
+                <li><a href="#">Sign up</a></li>
+                <li><a href="#">Sign in</a></li>
+                <li class="focus-line"><a href="#">lineKW</a></li>
+            </ul>
+            <div id="menu_bars" class="right hidden visible-xs">
+                <span class="t1"></span>
+                <span class="t2"></span>
+                <span class="t3"></span>
+            </div>
+            <a href="#search" class="search-icon">
+                <img src="images/search.svg" alt="">
+            </a>
+        </div>
+        <div class="sidebar_menu">
+            <nav class="pushmenu pushmenu-right">
+                <a class="push-logo" href="#">
+                    <img src="images/logo-xs.svg" alt="Line Technology"></a>
+                <ul class="push_nav centered">
+                    <li class="clearfix">
+                        <a href="#"><span>01.</span>Sign up</a>
+                    </li>
+                    <li class="clearfix">
+
+                        <a href="#"> <span>02.</span>Sign in</a>
+                    </li>
+                    <li class="clearfix">
+                        <a href="#"> <span>03.</span>lineKW</a>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+                <ul class="social_icon black top25 bottom20 list-inline">
+                    <li><a href="#"><i class="fa fa-fw fa-facebook"></i></a></li>
+                    <li><a href="#"><i class="fa fa-fw fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fa fa-fw fa fa-instagram"></i></a></li>
+                    <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header><!--header-->
     <section class="section-content-inner">
         <div class="container">
             <h2 class="title_inner">HTML5 & ANGULAR 4</h2>
@@ -28,7 +75,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="box-course-meta">
-                        <p><img src="{{asset('assets/website/images/user.svg')}}">Ashraf.Hussain</p>
+                        <p><img src="{{asset('assets/website/images/user.svg')}}">{{ Auth::user()->name }}</p>
                         <p><img src="{{asset('assets/website/images/clock2.svg')}}">34:12 <span><img src="{{asset('assets/website/images/date.svg')}}">12-1-2018</span></p>
                         <p><img src="{{asset('assets/website/images/clock.svg')}}">2 Month</p>
                         <p class="price-color"><img src="{{asset('assets/website/images/price.svg')}}">225 KD</p>
