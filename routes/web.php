@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('website.blog.index');
-});
+})->name('home');
 Route::view('contact-us','website.contact')->name('contact');
 
 

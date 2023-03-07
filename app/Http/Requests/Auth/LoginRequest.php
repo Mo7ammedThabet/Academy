@@ -47,17 +47,7 @@ class LoginRequest extends FormRequest
             'password' => ['required', 'string'],
         ];
 
-        if(auth()->attempt(array('email' => $input['email'], 'password' => $input['password'])))
-        {
-            if (auth()->user()->type == 'trainer') {
-                return redirect()->route('auth.dashboard');
-            }else{
-                return redirect()->route('home');
-            }
-        }else{
-            return redirect()->route('login')
-                ->with('error','Email-Address And Password Are Wrong.');
-        }
+        
     }
 
 
