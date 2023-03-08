@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Course;
 use Illuminate\Http\Request;
+use Termwind\Components\Dd;
 
 class CourseController extends Controller
 {
@@ -40,13 +41,26 @@ class CourseController extends Controller
     {
         $request->validate([
             'title' => 'required',
-            'image' => 'required',
+            'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
             'time_course' => 'required',
             'description' => 'required',
             'price' => 'required',
             'date' => 'required',
         ]);
-        Course::create($request->all());
+        $image_path = $request->file('image')->store('image', 'public');
+        // dd($image_path);
+        // $data['image'] = $this->uploadImgae($request);
+        $data=Course::create([
+            'title' => $request->title,
+            'image' => $image_path,
+            'time_course' => $request->time_course,
+            'description' => $request->description,
+            'price' => $request->price,
+            'date' => $request->date,
+
+        ]);
+        // dd($data);
+
         return redirect()->route('courses.index')->with('success', 'Course created successfully.');
 
     }

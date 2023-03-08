@@ -44,7 +44,7 @@
 
                                                 <td> {{ $course->title}} </td>
                                                   <td class="py-1">
-                                                      <img src="{{ $course->image}}" style="width: 100px; height:90%  " alt="image" />
+                                                      <img src="{{$course->image}}" style="width: 100px; height:90%" alt="image" />
                                                   </td>
 
 
@@ -58,6 +58,7 @@
                                                 <td>
                                                     <a href="{{route('courses.edit',$course->id)}}" class="btn btn-sm btn-outline-success">Edit</a>
                                                 </td>
+
 
                                                   <td>
                                                       {{-- <a href="" class="btn btn-sm btn-info"><i class="fas fa-edit"></i></a> --}}

@@ -29,8 +29,8 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
         if (auth()->user()->type == 'trainer') {
-            return redirect()->route('dashboard');
-        }else{
+            return redirect()->route('courses.index');
+        } else {
             return redirect()->route('home');
         }
 

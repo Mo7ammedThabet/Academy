@@ -76,7 +76,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{route('dashboard')}}">
+              <a class="nav-link" href="{{route('auth.dashboard')}}">
                 <span class="menu-title">Dashboard</span>
                 <i class="mdi mdi-home menu-icon"></i>
               </a>
@@ -156,5 +156,5 @@
     @endif
 </script>
 
-  </body>
+</body>
 </html>

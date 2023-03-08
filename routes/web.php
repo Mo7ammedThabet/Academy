@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('website.blog.index');
 })->name('home');
-Route::view('contact-us','website.contact')->name('contact');
+Route::view('contact-us', 'website.contact')->name('contact');
 
 
 /*  User Routes List */
@@ -36,7 +36,7 @@ Route::view('contact-us','website.contact')->name('contact');
 // });
 Route::middleware(['auth', 'user-access:trainer'])->group(function () {
 
-    Route::get('dashboard',[DashboardController::class,'dashboard'])->name('auth.dashboard');
+    Route::get('dashboard', [DashboardController::class, 'dashboard'])->name('auth.dashboard');
     Route::resource('courses', CourseController::class);
 });
 
@@ -47,9 +47,9 @@ Route::middleware(['auth', 'user-access:trainer'])->group(function () {
 
 
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -66,4 +66,4 @@ Route::middleware('auth')->group(function () {
 
 
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

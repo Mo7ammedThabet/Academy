@@ -25,7 +25,7 @@
                     <img src="{{asset('assets/auth/images/dashboard/circle.svg')}}" class="card-img-absolute" alt="circle-image" />
                     <h4 class="font-weight-normal mb-3">Courses<i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
                     </h4>
-                    <h2 class="mb-5">category</h2>
+                    <h2 class="mb-5">{{$courseCount}}</h2>
                     <h6 class="card-text">Forever</h6>
                   </div>
                 </div>

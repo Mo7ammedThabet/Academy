@@ -62,8 +62,8 @@
                       <div class="form-group">
                         <label class="col-sm-3 col-form-label">Time of Course</label>
                         <div class="col-sm-9">
-
-                          <input class="form-control" type="time" name="time_course" id="time_course"   placeholder="H:M" />
+                            <input class="form-control" type="text" id="time_course" name="time_course"pattern="\d{2}:\d{2}" title="Three letter country code" placeholder="H:M">
+                          {{-- <input class="form-control" type="text" name="time_course" id="time_course"   placeholder="H:M" /> --}}
                         </div>
                     </div>
 
