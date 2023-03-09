@@ -7,7 +7,12 @@ use Illuminate\Http\Request;
 
 class WebsiteController extends Controller
 {
-    //
+
+    public function home()
+    {
+        $course = Course::all();
+        return view('website.blog.index' ,  ['courses' => $course]);
+    }
 
 
 

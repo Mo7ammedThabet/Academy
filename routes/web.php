@@ -3,6 +3,7 @@
 
 use App\Http\Controllers\Auth\DashboardController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\WebsiteController;
 use App\Http\Controllers\CourseController;
 use Illuminate\Support\Facades\Route;
 
@@ -44,6 +45,12 @@ Route::middleware(['auth', 'user-access:trainer'])->group(function () {
 // Route::get('/', function () {
 //     return view('website.blog.single');
 // });
+
+Route::controller(WebsiteController::class)->group(function (){
+    // Route::get('/',  'home')->name('home');
+    Route::get('/', 'home')->name('home');
+    Route::get('/courses/{course}',  'show')->name('website.course.show');
+});
 
 
 

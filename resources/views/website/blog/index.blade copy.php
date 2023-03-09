@@ -44,9 +44,10 @@
             <div class="row">
                 <div class="col-sm-6">
                     @if (count($courses) > 0)
-                    @foreach ($courses as $course )
+                            
                             <div class="course-item">
                                 <div class="course-thumb">
+
                                     <a href="#" class="img-hover">
                                         <img src="{{ asset('storage/' . $course->image) }}" alt=""
                                             class="img-responsive">

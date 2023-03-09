@@ -21,6 +21,7 @@ return new class extends Migration
             $table->text('description');
             $table->integer('price');
             $table->date('date');
+            $table->foreignId('user_id')->constrained('users');
             $table->timestamps();
         });
     }

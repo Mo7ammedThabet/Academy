@@ -43,10 +43,10 @@
                                               <tr>
 
                                                 <td> {{ $course->title}} </td>
-                                                  <td class="py-1">
-                                                      <img src="{{$course->image}}" style="width: 100px; height:90%" alt="image" />
-                                                  </td>
 
+                                                <td class="py-1">
+                                                    <img src="storage/{{$course->image}}" style="width: 100px; height:90%" alt="image" />
+                                                </td>
 
                                                   <td> {{$course->price}} </td>
                                                   <td>

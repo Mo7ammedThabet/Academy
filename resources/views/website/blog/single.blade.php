@@ -1,6 +1,6 @@
 @extends('layouts.website')
 
-@section('title','Single Blog')
+@section('title', $course->name)
 
 @section('content')
 <header id="header" class="header-inner">
@@ -52,13 +52,13 @@
 </header><!--header-->
     <section class="section-content-inner">
         <div class="container">
-            <h2 class="title_inner">HTML5 & ANGULAR 4</h2>
+            <h2 class="title_inner">{{$course->title}}</h2>
             <div class="row">
                 <div class="col-md-8">
                     <div class="owl-carousel" id="slide-course">
                         <div class="item">
                             <div class="item_course_thumb">
-                                <img src="{{asset('assets/website/images/slide-co.png')}}" alt="">
+                                <img src="{{ asset('storage/' . $course->image) }}" alt="">
                             </div>
                         </div>
                         <div class="item">
@@ -76,9 +76,9 @@
                 <div class="col-md-4">
                     <div class="box-course-meta">
                         <p><img src="{{asset('assets/website/images/user.svg')}}">{{ Auth::user()->name }}</p>
-                        <p><img src="{{asset('assets/website/images/clock2.svg')}}">34:12 <span><img src="{{asset('assets/website/images/date.svg')}}">12-1-2018</span></p>
+                        <p><img src="{{asset('assets/website/images/clock2.svg')}}">{{$course->time_course}} <span><img src="{{asset('assets/website/images/date.svg')}}">{{$course->date}}</span></p>
                         <p><img src="{{asset('assets/website/images/clock.svg')}}">2 Month</p>
-                        <p class="price-color"><img src="{{asset('assets/website/images/price.svg')}}">225 KD</p>
+                        <p class="price-color"><img src="{{asset('assets/website/images/price.svg')}}"> {{$course->price}} KD</p>
                         <div class="share-course">
                             <h3>Share course</h3>
                             <ul class="share-social clearfix">
@@ -99,7 +99,7 @@
             </div>
             <div class="description-block">
                 <h2 class="title_inner">Description</h2>
-                <p class="txt-description">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45  BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words</p>
+                <p class="txt-description">{{$course->description}}</p>
             </div>
             <div class="material-block">
                 <h2 class="title_inner">Materials</h2>
