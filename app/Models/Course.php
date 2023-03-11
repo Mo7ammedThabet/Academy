@@ -17,6 +17,12 @@ class Course extends Model
         return $this->belongsTo(User::class,'user_id');
     }
 
+    public function Comments()
+    {
+        return $this->hasMany(Comment::class,'course_id');
+    }
+
+
 }
 
 

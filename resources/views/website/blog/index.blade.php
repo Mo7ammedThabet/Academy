@@ -44,7 +44,7 @@
             <div class="row">
                 <div class="col-sm-6">
                     @if (count($courses) > 0)
-                    @foreach ($courses as $course )
+                        @foreach ($courses as $course )
                             <div class="course-item">
                                 <div class="course-thumb">
                                     <a href="#" class="img-hover">
@@ -82,7 +82,7 @@
                                 </div>
                             </div>
                         @endforeach
-                    @else
+                     @else
                         <h2 class="text-center text-danger mt-5">No course added yet</h2>
                     @endif
                 </div>

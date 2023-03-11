@@ -1,8 +1,8 @@
 @extends('layouts.auth')
 @section('styles')
 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
-    <link href=" https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css" rel="stylesheet" type="text/css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link href="https://cdn.datatables.net/v/dt/dt-1.13.3/datatables.min.css" rel="stylesheet"/>
 @endsection
 @section('content')
 
@@ -26,7 +26,7 @@
                                 @if( count($courses) > 0)
                                 <h4 class="card-title">Courses</h4>
 
-                                    <table id="posts-table" class="table table-striped">
+                                    <table id="myTable" class="table table-striped">
                                         <thead>
                                         <tr>
                                             <th> Title </th>
@@ -85,12 +85,18 @@
             </div>
 @endsection
 
-@section('scripte')
-             <script  src=" https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js" type="text/javascript" charset="utf8"></script>
+@section('scripts')
 
-                <script>
-                    $(document).ready(function () {
-                        $('#posts-table').DataTable();
-                    });
-                </script>
+<script src="https://cdn.datatables.net/v/dt/dt-1.13.3/datatables.min.js"></script>
+    <script
+  src="https://code.jquery.com/jquery-3.6.4.min.js"
+  integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+  crossorigin="anonymous">
+    </script>
+
+    <script>
+     $(document).ready(function () {
+     $('#myTable').DataTable();
+        });
+    </script>
 @endsection

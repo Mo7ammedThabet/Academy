@@ -112,6 +112,7 @@
                 <h2 class="title_inner">Comments</h2>
                 <div class="row">
                     <div class="col-sm-6">
+                        @foreach ($comments as $comment)
                         <div class="comment-block-in">
                             <div class="comment-head">
                                 <h2>Mohammed abu sedo</h2>
@@ -119,23 +120,13 @@
                             </div>
                             <div class="comment-body">
                                 <div class="comment-item">
-                                    <h3>Khaled abdullah</h3>
-                                    <span>3 hrs ago</span>
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                                </div>
-                                <div class="comment-item">
-                                    <h3>Khaled abdullah</h3>
-                                    <span>3 hrs ago</span>
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                                </div>
-                            </div>
-                            <div class="comment-footer">
-                                <div class="comment-write">
-                                    <textarea class="form-control" placeholder="write a comment..."></textarea>
-
+                                    <h3>{{ $comment->user->name }}</h3>
+                                    <span>{{ $comment->created_at->format('d-m-Y'); }}</span>
+                                    <p>{{ $comment->content }}</p>
                                 </div>
                             </div>
                         </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

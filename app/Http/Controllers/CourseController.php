@@ -18,7 +18,7 @@ class CourseController extends Controller
     public function index()
     {
         // $course = Course::all();
-        // $course = Course::with('user')->get();   
+        // $course = Course::with('user')->get();
         $course = Course::where('user_id',Auth::user()->id)->get();
         // dd($course->toArray());
         return view('auth.course.index', ['courses'=>$course]);
@@ -108,7 +108,7 @@ class CourseController extends Controller
      */
     public function show(Course $course,$id)
     {
-        $course=Course::with('user')->find($id);
+        $course=Course::with(['user','comments'])->find($id);
         return view('auth.course.show', ['course'=>$course]);
     }
 
