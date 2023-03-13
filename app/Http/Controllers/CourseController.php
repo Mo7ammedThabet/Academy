@@ -106,11 +106,12 @@ class CourseController extends Controller
      * @param  \App\Models\Course  $course
      * @return \Illuminate\Http\Response
      */
-    public function show(Course $course,$id)
-    {
-        $course=Course::with(['user','comments'])->find($id);
-        return view('auth.course.show', ['course'=>$course]);
-    }
+    // public function show(Course $course,$id)
+    // {
+    //     $course=Course::with(['user','comments'])->find($id);
+    //     dd($course->toArray());
+    //     return view('website.blog.single', ['course'=>$course]);
+    // }
 
     /**
      * Show the form for editing the specified resource.

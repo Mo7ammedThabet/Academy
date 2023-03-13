@@ -7,6 +7,10 @@ use App\Http\Controllers\WebsiteController;
 use App\Http\Controllers\CourseController;
 use Illuminate\Support\Facades\Route;
 
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -46,12 +50,16 @@ Route::middleware(['auth', 'user-access:trainer'])->group(function () {
 //     return view('website.blog.single');
 // });
 
-Route::controller(WebsiteController::class)->group(function (){
-    // Route::get('/',  'home')->name('home');
-    Route::get('/', 'home')->name('home');
-    Route::get('/courses/{course}',  'show')->name('website.course.show');
-});
+// Route::controller(WebsiteController::class)->group(['prefix'=> LaravelLocalization::setLocale(),],function (){
+//     Route::get('/', 'home')->name('home');
+//     Route::get('/courses/{course}',  'show')->name('website.course.show');
+// });
 
+
+Route::prefix(LaravelLocalization::setLocale())->group(function () {
+    Route::get('/', [WebsiteController::class, 'home'])->name('home');
+    Route::get('/courses/{course}', [WebsiteController::class, 'show'])->name('website.course.show');
+});
 
 
 // Route::get('/dashboard', function () {

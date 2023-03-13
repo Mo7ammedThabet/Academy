@@ -54,7 +54,7 @@
         <div class="container">
             <h2 class="title_inner">{{$course->title}}</h2>
             <div class="row">
-                <div class="col-md-8">
+                {{-- <div class="col-md-8">
                     <div class="owl-carousel" id="slide-course">
                         <div class="item">
                             <div class="item_course_thumb">
@@ -72,10 +72,20 @@
                             </div>
                         </div>
                     </div>
+                </div> --}}
+                <div class="col-md-8">
+                        <div class="item_course_thumb">
+                                <div  class="item_course_thumb">
+                                <img src="{{ asset('storage/' . $course->image) }}" alt="" >
+                                </div>
+
+                        </div>
                 </div>
                 <div class="col-md-4">
                     <div class="box-course-meta">
+                        @auth
                         <p><img src="{{asset('assets/website/images/user.svg')}}">{{ Auth::user()->name }}</p>
+                        @endauth
                         <p><img src="{{asset('assets/website/images/clock2.svg')}}">{{$course->time_course}} <span><img src="{{asset('assets/website/images/date.svg')}}">{{$course->date}}</span></p>
                         <p><img src="{{asset('assets/website/images/clock.svg')}}">2 Month</p>
                         <p class="price-color"><img src="{{asset('assets/website/images/price.svg')}}"> {{$course->price}} KD</p>
@@ -98,21 +108,21 @@
                 </div>
             </div>
             <div class="description-block">
-                <h2 class="title_inner">Description</h2>
+                <h2 class="title_inner">{{__('Description')}}</h2>
                 <p class="txt-description">{{$course->description}}</p>
             </div>
             <div class="material-block">
-                <h2 class="title_inner">Materials</h2>
+                <h2 class="title_inner">{{__('Materials')}}</h2>
                 <ul class="material-list">
                     <li><a href="#"><img src="{{asset('assets/website/images/pdf_file.svg')}}">css3_and_html.pdf</li></a>
                     <li><a href="#"><img src="{{asset('assets/website/images/zip_file.svg')}}">css3_1.zip</li></a>
                 </ul>
             </div>
             <div class="comment-block">
-                <h2 class="title_inner">Comments</h2>
+                <h2 class="title_inner">{{__('Comments')}}</h2>
                 <div class="row">
                     <div class="col-sm-6">
-                        @foreach ($comments as $comment)
+                        {{-- @foreach ($comments as $comment) --}}
                         <div class="comment-block-in">
                             <div class="comment-head">
                                 <h2>Mohammed abu sedo</h2>
@@ -120,13 +130,13 @@
                             </div>
                             <div class="comment-body">
                                 <div class="comment-item">
-                                    <h3>{{ $comment->user->name }}</h3>
+                                    {{-- <h3>{{ $comment->user->name }}</h3>
                                     <span>{{ $comment->created_at->format('d-m-Y'); }}</span>
-                                    <p>{{ $comment->content }}</p>
+                                    <p>{{ $comment->content }}</p> --}}
                                 </div>
                             </div>
                         </div>
-                        @endforeach
+                        {{-- @endforeach --}}
                     </div>
                 </div>
             </div>

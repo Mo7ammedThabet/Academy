@@ -18,6 +18,16 @@ class WebsiteController extends Controller
 
     public function show(Course $course)
     {
-        return view('website.blog.single', ['course' => $course]);
+        // $course=Course::with(['user','comments'])->find($id);
+
+        // dd($course->toArray());
+        return view('website.blog.single', ['course' => $course,]);
     }
+
+    //    public function show(Course $course,$id)
+    // {
+    //     $course=Course::with(['user','comments'])->find($id);
+    //     dd($course->toArray());
+    //     return view('website.blog.single', ['course'=>$course]);
+    // }
 }

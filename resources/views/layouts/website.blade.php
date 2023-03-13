@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>أكاديمي</title>
+	<title>{{__('Academic')}}</title>
 	<!-- Stylesheets -->
 	<link href="{{asset('assets/website/css/bootstrap.css')}}" rel="stylesheet">
 	<link href="{{asset('assets/website/css/font-awesome.css')}}" rel="stylesheet">
@@ -41,8 +41,8 @@
 				</div>
 				<div class="col-header-right">
 					<ul class="head-menu clearfix">
-						<li><a href="{{ route('register') }}">Sign up</a></li>
-						<li><a href="{{ route('login') }}">Sign in</a></li>
+						<li><a href="{{ route('register') }}">{{__('Sign up')}}</a></li>
+						<li><a href="{{ route('login') }}">{{__('Sign in')}}</a></li>
 						<li class="focus-line"><a href="#">lineKW</a></li>
 					</ul>
 					<div id="menu_bars" class="right hidden visible-xs">
@@ -89,7 +89,7 @@
 				<div class="row">
 					<div class="col-md-3 col-sm-4">
 						<div class="f-box">
-							<h2 class="f-box-title">Contact us</h2>
+							<h2 class="f-box-title">{{__('Contact us')}}</h2>
 							<div class="contact-info">
 								<h3>Kuwait, Salmeya S.T</h3>
 								<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard</p>
@@ -102,7 +102,7 @@
 					</div>
 					<div class="col-md-offset-2 col-md-3  col-sm-4">
 						<div class="f-box">
-							<h2 class="f-box-title">Links</h2>
+							<h2 class="f-box-title">{{__('Links')}}</h2>
 							<ul class="menu-footer">
 								<li><a href="#">Privacy policy</a></li>
 								<li><a href="#">Tearms & conditions</a></li>
@@ -115,7 +115,7 @@
 					</div>
 					<div class="col-md-offset-1 col-md-3  col-sm-4">
 						<div class="f-box">
-							<h2 class="f-box-title">Contact us</h2>
+							<h2 class="f-box-title">{{__('Contact us')}}</h2>
 							<form class="form-contact" action="#">
 								<div class="form-group">
 									<input type="email" class="form-control" placeholder="Email Address">
@@ -123,7 +123,7 @@
 								<div class="form-group">
 									<textarea class="form-control" placeholder="Email Address"></textarea>
 								</div>
-								<button type="submit" class="btn btn-submit">Send</button>
+								<button type="submit" class="btn btn-submit">{{__('Send')}}</button>
 							</form>
 						</div>
 					</div>

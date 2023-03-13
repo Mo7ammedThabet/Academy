@@ -23,6 +23,12 @@ class Course extends Model
     }
 
 
+    public function Auttachment()
+    {
+        return $this->hasMany(Comment::class,'auttachment_id');
+    }
+
+
 }
 
 
