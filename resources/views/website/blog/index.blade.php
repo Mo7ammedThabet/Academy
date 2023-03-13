@@ -1,7 +1,6 @@
 @extends('layouts.website')
 
 @section('content')
-
     <!--Home start-->
     <section id="home">
         <div class="swiper-container parallax-slider" id="gradient">
@@ -42,55 +41,53 @@
     <section class="section-content-academy">
         <div class="container">
             <div class="row">
-                <div class="col-sm-6">
-                    @if (count($courses) > 0)
-                        @foreach ($courses as $course )
-                            <div class="course-item">
-                                <div class="course-thumb">
-                                    <a href="#" class="img-hover">
-                                        <img src="{{ asset('storage/' . $course->image) }}" alt=""
-                                            class="img-responsive">
-                                    </a>
-                                </div>
-                                <div class="course-txt">
-                                    <div class="cour__top clearfix">
-                                        <h2><a href="#">{{ $course->title }}</a></h2>
-                                        <div class="c-tags"><i class="fa fa-tag"></i>Software</div>
-                                    </div>
-                                    <div class="cour__bottom clearfix">
-                                        <div class="cb-left">
-                                            <div class="c-avatar">
-                                                {{-- image user --}}
-                                                <img src="{{ asset('assets/website/images/s.jpeg') }}" alt=""
-                                                    class="avatar-thumb">
-                                                @auth
-                                                    <h2>{{ Auth::user()->name }}</h2>
-                                                @endauth
-                                            </div>
-                                            <ul class="meta-course clearfix">
-                                                <li><img src="{{ asset('assets/website/images/clock2.svg') }}"
-                                                        alt="">{{ $course->time_course }}</li>
-                                                <li><img src="{{ asset('assets/website/images/date.svg') }}"
-                                                        alt="">{{ $course->date }}</li>
-                                            </ul>
-                                        </div>
-                                        <div class="cb-right">
-                                            <div class="cour-salary">{{ $course->price }}KD</div>
-                                        </div>
-                                    </div>
-                                    <a href="{{ route('website.course.show', $course->id) }}" class="book-now">Book now</a>
-                                </div>
+
+
+                @foreach ($courses as $course)
+                    <div class="col-sm-6">
+                        <div class="course-item">
+                            <div class="course-thumb">
+                                <a href="#" class="img-hover">
+                                    <img src="{{ asset('storage/' . $course->image) }}" alt=""
+                                        class="img-responsive">
+                                </a>
                             </div>
-                        @endforeach
-                     @else
-                        <h2 class="text-center text-danger mt-5">No course added yet</h2>
-                    @endif
-                </div>
+                            <div class="course-txt">
+                                <div class="cour__top clearfix">
+                                    <h2><a href="#">{{ $course->title }}</a></h2>
+                                    <div class="c-tags"><i class="fa fa-tag"></i>Software</div>
+                                </div>
+                                <div class="cour__bottom clearfix">
+                                    <div class="cb-left">
+                                        <div class="c-avatar">
+                                            <img src="{{ asset('assets/website/images/s.jpeg') }}" alt=""
+                                                class="avatar-thumb">
+                                            <h2>{{ $course->user->name}}</h2>
+                                        </div>
+                                        <ul class="meta-course clearfix">
+                                            <li><img src="{{ asset('assets/website/images/clock2.svg') }}"
+                                                    alt="">{{ $course->time_course }}</li>
+                                            <li><img src="{{ asset('assets/website/images/date.svg') }}"
+                                                    alt="">{{ $course->date }}</li>
+                                        </ul>
+                                    </div>
+                                    <div class="cb-right">
+                                        <div class="cour-salary">{{ $course->price }}KD</div>
+                                    </div>
+                                </div>
+                                <a href="{{ route('website.course.show', $course->id) }}" class="book-now">Book now</a>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+                @if (count($courses) == 0)
+                    <h2 class="text-center text-danger mt-5">No course added yet</h2>
+                @endif
+
             </div>
             <div class="loader-block">
                 Waiting<img src="{{ asset('assets/website/images/loader.svg') }}" alt="">
             </div>
         </div>
     </section>
-
 @endsection

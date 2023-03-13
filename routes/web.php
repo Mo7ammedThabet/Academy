@@ -28,17 +28,11 @@ Route::get('/', function () {
 Route::view('contact-us', 'website.contact')->name('contact');
 
 
-/*  User Routes List */
-
 
 
 
 
 /*  Trainer Routes List */
-// Route::prefix('auth')->middleware(['auth'])->group(function (){
-//     Route::get('dashboard',[DashboardController::class,'dashboard'])->name('auth.dashboard');
-//      Route::resource('courses', CourseController::class);
-// });
 Route::middleware(['auth', 'user-access:trainer'])->group(function () {
 
     Route::get('dashboard', [DashboardController::class, 'dashboard'])->name('auth.dashboard');
@@ -46,19 +40,13 @@ Route::middleware(['auth', 'user-access:trainer'])->group(function () {
 });
 
 
-// Route::get('/', function () {
-//     return view('website.blog.single');
-// });
-
-// Route::controller(WebsiteController::class)->group(['prefix'=> LaravelLocalization::setLocale(),],function (){
-//     Route::get('/', 'home')->name('home');
-//     Route::get('/courses/{course}',  'show')->name('website.course.show');
-// });
-
-
+/*  User Routes List */
 Route::prefix(LaravelLocalization::setLocale())->group(function () {
     Route::get('/', [WebsiteController::class, 'home'])->name('home');
-    Route::get('/courses/{course}', [WebsiteController::class, 'show'])->name('website.course.show');
+    Route::middleware(['auth', 'auth'])->group(function () {
+        Route::get('/course/{id}', [WebsiteController::class, 'show_course'])->name('website.course.show');
+        Route::post('/comment', [WebsiteController::class, 'comment'])->name('website.comment');
+    });
 });
 
 

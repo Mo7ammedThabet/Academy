@@ -20,7 +20,7 @@ class CourseController extends Controller
         // $course = Course::all();
         // $course = Course::with('user')->get();
         $course = Course::where('user_id',Auth::user()->id)->get();
-        // dd($course->toArray());
+        // dd($course->toArray());  
         return view('auth.course.index', ['courses'=>$course]);
 
     }
