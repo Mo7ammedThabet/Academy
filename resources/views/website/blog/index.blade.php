@@ -55,7 +55,10 @@
                             <div class="course-txt">
                                 <div class="cour__top clearfix">
                                     <h2><a href="#">{{ $course->title }}</a></h2>
-                                    <div class="c-tags"><i class="fa fa-tag"></i>Software</div>
+                                    {{-- @foreach ($courses as $course ) --}}
+                                    <div class="c-tags"><i class="fa fa-tag"></i>{{$course->category->name}}</div>
+                                    {{-- @endforeach --}}
+
                                 </div>
                                 <div class="cour__bottom clearfix">
                                     <div class="cb-left">
@@ -75,7 +78,7 @@
                                         <div class="cour-salary">{{ $course->price }}KD</div>
                                     </div>
                                 </div>
-                                <a href="{{ route('website.course.show', $course->id) }}" class="book-now">Book now</a>
+                                <a href="{{ route('website.course.show', $course->title) }}" class="book-now">Book now</a>
                             </div>
                         </div>
                     </div>

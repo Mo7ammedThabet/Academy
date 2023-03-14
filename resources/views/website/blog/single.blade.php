@@ -13,9 +13,9 @@
             </div>
             <div class="col-header-right">
                 <ul class="head-menu clearfix">
-                    <li><a href="#">Sign up</a></li>
-                    <li><a href="#">Sign in</a></li>
-                    <li class="focus-line"><a href="#">lineKW</a></li>
+                    <li><a href="#">{{ Auth::user()->name }}</a></li>
+                    <li><a href="{{route('logout')}}" >{{__('Logout')}}</a></li>
+                    <li class="focus-line"><a href="{{route('profile.edit')}}">{{__('Profile')}}</a></li>
                 </ul>
                 <div id="menu_bars" class="right hidden visible-xs">
                     <span class="t1"></span>
@@ -26,7 +26,7 @@
                     <img src="images/search.svg" alt="">
                 </a>
             </div>
-            <div class="sidebar_menu">
+            {{-- <div class="sidebar_menu">
                 <nav class="pushmenu pushmenu-right">
                     <a class="push-logo" href="#">
                         <img src="images/logo-xs.svg" alt="Line Technology"></a>
@@ -50,7 +50,7 @@
                         <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
                     </ul>
                 </nav>
-            </div>
+            </div> --}}
         </div>
     </header>
     <!--header-->

@@ -28,10 +28,6 @@ Route::get('/', function () {
 Route::view('contact-us', 'website.contact')->name('contact');
 
 
-
-
-
-
 /*  Trainer Routes List */
 Route::middleware(['auth', 'user-access:trainer'])->group(function () {
 
@@ -44,15 +40,15 @@ Route::middleware(['auth', 'user-access:trainer'])->group(function () {
 Route::prefix(LaravelLocalization::setLocale())->group(function () {
     Route::get('/', [WebsiteController::class, 'home'])->name('home');
     Route::middleware(['auth', 'auth'])->group(function () {
-        Route::get('/course/{id}', [WebsiteController::class, 'show_course'])->name('website.course.show');
+        Route::get('/course/{title}', [WebsiteController::class, 'show_course'])->name('website.course.show');
         Route::post('/comment', [WebsiteController::class, 'comment'])->name('website.comment');
     });
 });
 
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

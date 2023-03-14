@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\Category;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Termwind\Components\Dd;
@@ -20,7 +21,8 @@ class CourseController extends Controller
         // $course = Course::all();
         // $course = Course::with('user')->get();
         $course = Course::where('user_id',Auth::user()->id)->get();
-        // dd($course->toArray());  
+
+        // dd($course->toArray());
         return view('auth.course.index', ['courses'=>$course]);
 
     }
@@ -33,7 +35,9 @@ class CourseController extends Controller
     public function create()
     {
         $course = Course::all();
-        return view('auth.course.create', ['courses'=>$course]);
+        $category = Category::all();
+        // dd($categories->toArray());
+        return view('auth.course.create', ['courses'=>$course, 'categories'=>$category]);
     }
 
     /**
@@ -51,6 +55,7 @@ class CourseController extends Controller
             'description' => 'required',
             'price' => 'required',
             'date' => 'required',
+            'category_id' => 'required',
         ]);
         $image_path = $request->file('image')->store('image', 'public');
         $user_id = Auth::user()->id;
@@ -64,40 +69,16 @@ class CourseController extends Controller
             'price' => $request->price,
             'date' => $request->date,
             'user_id' => Auth::user()->id,
+            'category_id' => $request->category_id,
 
         ]);
-        // dd($data);
+        // dd($data->toArray());
 
         return redirect()->route('courses.index')->with('success', 'Course created successfully.');
 
     }
 
 
-//     public function store(Request $request)
-// {
-//     $request->validate([
-//         'title' => 'required',
-//         'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
-//         'time_course' => 'required',
-//         'description' => 'required',
-//         'price' => 'required',
-//         'date' => 'required',
-//     ]);
-
-//     $image_path = $request->file('image')->store('image', 'public');
-
-//     $course = new Course;
-//     $course->title = $request->title;
-//     $course->image = $image_path;
-//     $course->time_course = $request->time_course;
-//     $course->description = $request->description;
-//     $course->price = $request->price;
-//     $course->date = $request->date;
-//     $course->user_id = Auth::user()->id;
-//     $course->save();
-
-//     return redirect()->route('courses.index')->with('success', 'Course created successfully.');
-// }
 
 
     /**

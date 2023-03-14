@@ -42,6 +42,14 @@
                         <input type="text" name="title" class="form-control" id="title" placeholder="Title" value="{{ old('title') }}" required>
                       </div>
                       <div class="form-group">
+                        <label>Category</label>
+                        <select name="category_id" class="form-control" required>
+                                @foreach ($categories as $category)
+                                    <option @selected( old('category') == $category-> id) value="{{$category->id}}">{{ $category->name }}</option>
+                                @endforeach
+                        </select>
+                      </div>
+                      <div class="form-group">
                         <label for="exampleInputName1">Price</label>
                         <div class="input-group">
                           <div class="input-group-prepend">

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Course extends Model
 {
     use HasFactory;
-    protected $fillable = [ 'title', 'price', 'time_course','date','image','description','user_id'];
+    protected $fillable = [ 'title', 'price', 'time_course','date','image','description','user_id','category_id'];
 
 
 
@@ -28,6 +28,11 @@ class Course extends Model
         return $this->hasMany(Comment::class,'auttachment_id');
     }
 
+
+    public function Category()
+    {
+        return $this->belongsTo(Category::class,'category_id');
+    }
 
 }
 
