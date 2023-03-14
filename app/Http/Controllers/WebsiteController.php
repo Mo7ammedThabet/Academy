@@ -13,8 +13,9 @@ class WebsiteController extends Controller
     public function home()
     {
         // $course = Course::with('User')->get();
-        $course = Course::with(['User', 'Comments.user','Category'])->get();
-        // dd($course->toArray());
+        $course = Course::with(['User', 'Comments.user','Category',])->get();
+        $course = Course::where('is_publish', Course::Published)->get();
+        // dd($posts->toArray());
         return view('website.blog.index',  ['courses' => $course]);
     }
 

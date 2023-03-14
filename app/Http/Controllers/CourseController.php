@@ -70,6 +70,8 @@ class CourseController extends Controller
             'date' => $request->date,
             'user_id' => Auth::user()->id,
             'category_id' => $request->category_id,
+            'is_publish' => $request->is_publish,
+
 
         ]);
         // dd($data->toArray());

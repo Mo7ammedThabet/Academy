@@ -34,11 +34,14 @@
                                             <th> price </th>
                                             <th>description</th>
                                             <th> date </th>
+                                            <th> Category </th>
                                             <th>time_course</th>
+                                            <th> Status </th>
                                             <th> Action </th>
                                         </tr>
                                         </thead>
                                         <tbody>
+
                                           @foreach($courses  as $course )
                                               <tr>
 
@@ -53,7 +56,9 @@
                                                     {!! Str::limit($course->description, 15) !!}
                                                 </td>
                                                   <td> {{$course->date}} </td>
+                                                  <td> {{$course->category->name}}</td>
                                                   <td> {{$course->time_course}} </td>
+                                                  <td> {{$course->is_publish ==1 ? 'Published' : 'Draft'}} </td>
 
                                                 <td>
                                                     <a href="{{route('courses.edit',$course->id)}}" class="btn btn-sm btn-outline-success">Edit</a>
@@ -76,7 +81,7 @@
                                         </tbody>
                                     </table>
                                 @else
-                                   <h3 class="text-center text-danger">No posts found</h3>
+                                   <h3 class="text-center text-danger">No course found</h3>
                                    @endif
                             </div>
                         </div>

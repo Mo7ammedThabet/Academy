@@ -62,6 +62,14 @@
                         </div>
                       </div>
                       <div class="form-group">
+                        <label>Published</label>
+                        <select name="is_publish" class="form-control">
+                            <option disabled selected>Choose Option</option>
+                            <option @selected( old('is_publish') == 1 ) value="1">Publish</option>
+                            <option @selected( old('is_publish') == 0 )  value="0">Draft</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
                           <label class="col-sm-3 col-form-label">Date of Course</label>
                           <div class="col-sm-9">
                             <input class="form-control" name="date" type="date" placeholder="dd/mm/yyyy" />
