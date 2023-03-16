@@ -6,6 +6,7 @@ use App\Models\Course;
 use App\Models\Category;
 use App\Models\Comment;
 use Illuminate\Http\Request;
+use Termwind\Components\Dd;
 
 class WebsiteController extends Controller
 {
@@ -24,6 +25,7 @@ class WebsiteController extends Controller
     public function show_course($title)
     {
         $course = Course::with(['User', 'Comments.user'])->where('title',$title)->first();
+        
         return view('website.blog.single', ['course' => $course]);
     }
 

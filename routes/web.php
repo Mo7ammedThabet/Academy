@@ -5,6 +5,8 @@ use App\Http\Controllers\Auth\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WebsiteController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\AdminController;
+
 use Illuminate\Support\Facades\Route;
 
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -22,10 +24,18 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 |
 */
 
-Route::get('/', function () {
-    return view('website.blog.index');
-})->name('home');
+// Route::get('/', function () {
+//     return view('website.blog.index');
+// })->name('home');
 Route::view('contact-us', 'website.contact')->name('contact');
+
+
+Route::get('/admin', function () {
+    return view('auth.course_admin.index');
+});
+
+
+
 
 
 /*  Trainer Routes List */
@@ -33,6 +43,14 @@ Route::middleware(['auth', 'user-access:trainer'])->group(function () {
 
     Route::get('dashboard', [DashboardController::class, 'dashboard'])->name('auth.dashboard');
     Route::resource('courses', CourseController::class);
+});
+
+
+/*  Admins Routes List */
+Route::middleware(['auth', 'auth'])->group(function () {
+
+    Route::get('dashboard', [DashboardController::class, 'dashboard'])->name('auth.dashboard');
+    Route::resource('course', AdminController::class);
 });
 
 

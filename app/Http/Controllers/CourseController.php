@@ -25,6 +25,7 @@ class CourseController extends Controller
         // dd($course->toArray());
         return view('auth.course.index', ['courses'=>$course]);
 
+
     }
 
     /**
