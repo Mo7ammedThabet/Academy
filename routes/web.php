@@ -7,6 +7,7 @@ use App\Http\Controllers\WebsiteController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
+use App\Http\Controllers\Admin\CourseController as AdminCourseController;
 use Illuminate\Support\Facades\Route;
 
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -66,10 +67,19 @@ Route::middleware('auth')->group(function () {
 
 /*  Admins Routes List */
 Route::prefix('admin')->group(function () {
+  
     Route::get('/login', [AuthController::class, 'index'])->name('admin.login_form');
     Route::post('/login', [AuthController::class, 'login'])->name('admin.login');
-    Route::get('/',[AdminDashboardController::class,'index'])->name('admin.dashboard');
-    Route::get('/logout', [AuthController::class, 'logout'])->name('admin.logout');
+    Route::middleware('admin')->group(function () {
+        Route::get('/',[AdminDashboardController::class,'index'])->name('admin.dashboard');
+        Route::get('/logout', [AuthController::class, 'logout'])->name('admin.logout');
+        Route::name('admin.')->group(function () {
+            Route::get('courses/datatable',[AdminCourseController::class,'datatable'])->name('courses.datatable');
+            Route::resource('courses', AdminCourseController::class);
+        });
+        
+    });
+   
 
 });
 

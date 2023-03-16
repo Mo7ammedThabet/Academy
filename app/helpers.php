@@ -61,8 +61,3 @@ function getAllErrors($errors)
     }
     return false;
 }
-
- function get_palns()
-{
-    return App\Models\Plan::where('type',9356)->orderby('from_year','desc')->pluck('from_year','id');
-}
