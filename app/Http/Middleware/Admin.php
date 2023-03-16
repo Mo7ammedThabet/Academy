@@ -4,8 +4,8 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-
-class CheckUserType
+use Auth;
+class Admin
 {
     /**
      * Handle an incoming request.
@@ -14,14 +14,10 @@ class CheckUserType
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function handle(Request $request, Closure $next,...$types)
+    public function handle(Request $request, Closure $next)
     {
-        $user = $request->user();
-        if (!$user) {
-            return redirect()->route('login');
-        }
-        if (!in_array($user->type, $types)) {
-            abort(403);
+        if(!Auth::guard('admin')->check()){
+            return redirect()->route('admin.login_form');
         }
         return $next($request);
     }
