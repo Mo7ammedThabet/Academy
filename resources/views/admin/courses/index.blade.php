@@ -30,7 +30,7 @@
                 </button> --}}
                 <!--end::Filter-->
 
-                
+
             </div>
             <!--end::Toolbar-->
 
@@ -61,7 +61,7 @@
                 <th>الحالة </th>
                 <th class="text-end min-w-100px">الاجرائات</th>
             </thead>
-            
+
         </table>
         <!--end::Datatable-->
     </div>
@@ -71,14 +71,14 @@
 <script>
 
     "use strict";
-    
+
     // Class definition
     var KTDatatablesServerSide = function () {
         // Shared variables
         var table;
         var dt;
         var filterPayment;
-    
+
         // Private functions
         var initDatatable = function () {
             dt = $("#kt_datatable_example_1").DataTable({
@@ -98,14 +98,16 @@
                 },
                 ajax: {
                 url: '{{ route('admin.courses.datatable') }}',
-                    
+
                 },
                 columns: [
                     { data: 'id',"searchable": false },
                     { data: 'title'},
-                    { data: 'category.title'},
+                    { data: 'category.name'},
                     { data: 'user.name' },
-                    { data: 'is_publish'},
+                    { data: 'is_publish',
+
+                    },
                     { data: null,"searchable": false },
                 ],
                 columnDefs: [
@@ -119,7 +121,7 @@
                                 </div>`;
                         }
                     },
-                   
+
                     {
                     targets: -1,
                     data: null,
@@ -127,11 +129,12 @@
                     className: 'text-end',
                     render: function (data, type, row) {
                         var edit_link = '/goals/'+data.id+'/edit';
-                    
+                        var delete_link = '{{$destroy_url}}'.replace('/0', '/' + row.id);
+
                         return `\
                             <a href="#" class="btn btn-light btn-active-light-primary btn-sm" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end" data-kt-menu-flip="top-end">
                                 ...
-                              
+
                             </a>
                             <!--begin::Menu-->
                             <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
@@ -145,7 +148,7 @@
 
                                 <!--begin::Menu item-->
                                 <div class="menu-item px-3">
-                                    <a href="#" val_id="${data.id}" class="menu-link px-3" data-kt-docs-table-filter="delete_row">
+                                    <a href="#" val_id="${data.id}"class="menu-link px-3" data-kt-docs-table-filter="delete_row">
                                         حذف
                                     </a>
                                 </div>
@@ -161,9 +164,9 @@
                     $(row).find('td:eq(4)').attr('data-filter', data.CreditCardType);
                 }
             });
-    
+
             table = dt.$;
-    
+
             // Re-init functions on every table re-draw -- more info: https://datatables.net/reference/event/draw
             dt.on('draw', function () {
                 initToggleToolbar();
@@ -172,7 +175,7 @@
                 KTMenu.createInstances();
             });
         }
-    
+
         // Search Datatable --- official docs reference: https://datatables.net/reference/api/search()
         var handleSearchDatatable = function () {
             const filterSearch = document.querySelector('[data-kt-docs-table-filter="search"]');
@@ -180,53 +183,53 @@
                 dt.search(e.target.value).draw();
             });
         }
-    
+
         // Filter Datatable
         var handleFilterDatatable = () => {
             // Select filter options
             filterPayment = document.querySelectorAll('[data-kt-docs-table-filter="payment_type"] [name="payment_type"]');
             const filterButton = document.querySelector('[data-kt-docs-table-filter="filter"]');
-    
+
             // Filter datatable on submit
             if(filterButton){
                 filterButton.addEventListener('click', function () {
                 // Get filter values
                 let paymentValue = '';
-    
+
                 // Get payment value
                 filterPayment.forEach(r => {
                     if (r.checked) {
                         paymentValue = r.value;
                     }
-    
+
                     // Reset payment value if "All" is selected
                     if (paymentValue === 'all') {
                         paymentValue = '';
                     }
                 });
-    
+
                 // Filter datatable --- official docs reference: https://datatables.net/reference/api/search()
                 dt.search(paymentValue).draw();
             });
             }
-           
+
         }
-    
+
         // Delete customer
         var handleDeleteRows = () => {
             // Select all delete buttons
             const deleteButtons = document.querySelectorAll('[data-kt-docs-table-filter="delete_row"]');
-    
+
             deleteButtons.forEach(d => {
                 // Delete button on click
                 d.addEventListener('click', function (e) {
                     e.preventDefault();
                     // Select parent row
                     const parent = e.target.closest('tr');
-    
+
                     // Get customer name
                     const customerName = parent.querySelectorAll('td')[1].innerText;
-                    const id = $(this).attr('val_id'); 
+                    const id = $(this).attr('val_id');
                     // SweetAlert2 pop up --- official docs reference: https://sweetalert2.github.io/
                     Swal.fire({
                         text: "هل أنت متأكد من حذف  " + customerName + " ؟",
@@ -264,8 +267,8 @@
                                 });
                                 }
                             });
-                               
-                     
+
+
                         } else if (result.dismiss === 'cancel') {
                             Swal.fire({
                                 text: customerName + " تم الغاء عملية الحذف.",
@@ -281,35 +284,35 @@
                 })
             });
         }
-    
+
         // Reset Filter
         var handleResetForm = () => {
             // Select reset button
             const resetButton = document.querySelector('[data-kt-docs-table-filter="reset"]');
-    
+
             // Reset datatable
             if(resetButton){
                 resetButton.addEventListener('click', function () {
                 // Reset payment type
                 filterPayment[0].checked = true;
-    
+
                 // Reset datatable --- official docs reference: https://datatables.net/reference/api/search()
                 dt.search('').draw();
             });
             }
-           
+
         }
-    
+
         // Init toggle toolbar
         var initToggleToolbar = function () {
             // Toggle selected action toolbar
             // Select all checkboxes
             const container = document.querySelector('#kt_datatable_example_1');
             const checkboxes = container.querySelectorAll('[type="checkbox"]');
-    
+
             // Select elements
             const deleteSelected = document.querySelector('[data-kt-docs-table-select="delete_selected"]');
-    
+
             // Toggle delete selected toolbar
             checkboxes.forEach(c => {
                 // Checkbox on click event
@@ -319,7 +322,7 @@
                     }, 50);
                 });
             });
-    
+
             // Deleted selected rows
             if(deleteSelected){
                 deleteSelected.addEventListener('click', function () {
@@ -358,7 +361,7 @@
                                 // delete row data from server and re-draw datatable
                                 dt.draw();
                             });
-    
+
                             // Remove header checked box
                             const headerCheckbox = container.querySelectorAll('[type="checkbox"]')[0];
                             headerCheckbox.checked = false;
@@ -377,9 +380,9 @@
                 });
             });
             }
-           
+
         }
-    
+
         // Toggle toolbars
         var toggleToolbars = function () {
             // Define variables
@@ -387,14 +390,14 @@
             const toolbarBase = document.querySelector('[data-kt-docs-table-toolbar="base"]');
             const toolbarSelected = document.querySelector('[data-kt-docs-table-toolbar="selected"]');
             const selectedCount = document.querySelector('[data-kt-docs-table-select="selected_count"]');
-    
+
             // Select refreshed checkbox DOM elements
             const allCheckboxes = container.querySelectorAll('tbody [type="checkbox"]');
-    
+
             // Detect checkboxes state & count
             let checkedState = false;
             let count = 0;
-    
+
             // Count checked boxes
             allCheckboxes.forEach(c => {
                 if (c.checked) {
@@ -402,7 +405,7 @@
                     count++;
                 }
             });
-    
+
             // Toggle toolbars
             if (checkedState) {
                 selectedCount.innerHTML = count;
@@ -413,7 +416,7 @@
                 toolbarSelected.classList.add('d-none');
             }
         }
-    
+
         // Public methods
         return {
             init: function () {
@@ -426,14 +429,14 @@
             }
         }
     }();
-    
+
     // On document ready
     KTUtil.onDOMContentLoaded(function () {
         KTDatatablesServerSide.init();
     });
-    
-    
-    
+
+
+
     </script>
 
 @endsection
