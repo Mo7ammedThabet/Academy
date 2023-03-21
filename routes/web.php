@@ -67,20 +67,18 @@ Route::middleware('auth')->group(function () {
 
 /*  Admins Routes List */
 Route::prefix('admin')->group(function () {
-  
+
     Route::get('/login', [AuthController::class, 'index'])->name('admin.login_form');
     Route::post('/login', [AuthController::class, 'login'])->name('admin.login');
     Route::middleware('admin')->group(function () {
-        Route::get('/',[AdminDashboardController::class,'index'])->name('admin.dashboard');
+        Route::get('/', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
         Route::get('/logout', [AuthController::class, 'logout'])->name('admin.logout');
         Route::name('admin.')->group(function () {
-            Route::get('courses/datatable',[AdminCourseController::class,'datatable'])->name('courses.datatable');
+            Route::get('courses/datatable', [AdminCourseController::class, 'datatable'])->name('courses.datatable');
+            Route::post('courses/publish/{id}', [AdminCourseController::class, 'publish'])->name('courses.publish');
             Route::resource('courses', AdminCourseController::class);
         });
-        
     });
-   
-
 });
 
 
