@@ -43,7 +43,9 @@
                     <div class="fw-bolder me-5">
                         <span class="me-2" data-kt-docs-table-select="selected_count"></span> عنصر
                     </div>
-
+                    <button type="button" class="btn btn-danger btn-sm" data-kt-docs-table-select="delete_selected">
+                        حذف
+                    </button>   
                     {{-- <button type="button" class="btn btn-danger" data-bs-toggle="tooltip" title="Coming Soon">
                     Selection Action
                 </button> --}}
@@ -425,15 +427,22 @@
                 // Deleted selected rows
                 if (deleteSelected) {
                     deleteSelected.addEventListener('click', function() {
+                        const checkboxesDelete = container.querySelectorAll('[type="checkbox"]:checked'); 
+                        let output = [];
+                        checkboxesDelete.forEach((checkbox) => {
+                            if(checkbox.value != "on")
+                                output.push(checkbox.value);
+                        });
+
                         // SweetAlert2 pop up --- official docs reference: https://sweetalert2.github.io/
                         Swal.fire({
-                            text: "Are you sure you want to delete selected customers?",
+                            text: "هل أنت متأكد من حذف العناصر المختارة",
                             icon: "warning",
                             showCancelButton: true,
                             buttonsStyling: false,
                             showLoaderOnConfirm: true,
-                            confirmButtonText: "Yes, delete!",
-                            cancelButtonText: "No, cancel",
+                            confirmButtonText: "نعم , احذف!",
+                            cancelButtonText: "لا , الغي",
                             customClass: {
                                 confirmButton: "btn fw-bold btn-danger",
                                 cancelButton: "btn fw-bold btn-active-light-primary"
@@ -442,40 +451,52 @@
                             if (result.value) {
                                 // Simulate delete request -- for demo purpose only
                                 Swal.fire({
-                                    text: "Deleting selected customers",
+                                    text: "جاري حذف العناصر",
                                     icon: "info",
                                     buttonsStyling: false,
                                     showConfirmButton: false,
-                                    timer: 2000
+                                    timer: 1000
                                 }).then(function() {
+                                    jQuery.ajax({
+                                type: "DELETE",
+                                url: 'admin/courses/delete',
+                                data:{
+                                    "_token": "{{ csrf_token() }}",
+                                    'ids':output,
+                                },
+                                dataType: 'json',
+                                success :function (data) {
                                     Swal.fire({
-                                        text: "You have deleted all selected customers!.",
-                                        icon: "success",
-                                        buttonsStyling: false,
-                                        confirmButtonText: "Ok, got it!",
-                                        customClass: {
-                                            confirmButton: "btn fw-bold btn-primary",
-                                        }
-                                    }).then(function() {
-                                        // delete row data from server and re-draw datatable
-                                        dt.draw();
-                                    });
-
-                                    // Remove header checked box
-                                    const headerCheckbox = container.querySelectorAll(
-                                        '[type="checkbox"]')[0];
-                                    headerCheckbox.checked = false;
-                                });
-                            } else if (result.dismiss === 'cancel') {
-                                Swal.fire({
-                                    text: "Selected customers was not deleted.",
-                                    icon: "error",
+                                        text: "تمت عملية حذف العناصر المختارة !.",
+                                    icon: "success",
                                     buttonsStyling: false,
-                                    confirmButtonText: "Ok, got it!",
+                                    confirmButtonText: "حسنًا ، موافق!",
                                     customClass: {
                                         confirmButton: "btn fw-bold btn-primary",
                                     }
+                                }).then(function () {
+                                    // delete row data from server and re-draw datatable
+                                    dt.draw();
                                 });
+                                }
+                            });
+                            // Remove header checked box
+                            const headerCheckbox = container.querySelectorAll('[type="checkbox"]')[0];
+                            headerCheckbox.checked = false;
+                                });
+                            } else if (result.dismiss === 'cancel') {
+                                Swal.fire({
+                                text: "تم الغاء العملية.",
+                                icon: "error",
+                                buttonsStyling: false,
+                                confirmButtonText: "موافق!",
+                                customClass: {
+                                    confirmButton: "btn fw-bold btn-primary",
+                                }
+                            });
+                            console.log(headerCheckbox);
+                            const headerCheckbox = container.querySelectorAll('[type="checkbox"]')[0];
+                            headerCheckbox.checked = false;
                             }
                         });
                     });

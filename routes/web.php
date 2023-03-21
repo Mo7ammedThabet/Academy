@@ -76,6 +76,7 @@ Route::prefix('admin')->group(function () {
         Route::name('admin.')->group(function () {
             Route::get('courses/datatable', [AdminCourseController::class, 'datatable'])->name('courses.datatable');
             Route::post('courses/publish/{id}', [AdminCourseController::class, 'publish'])->name('courses.publish');
+            Route::delete('courses/delete', [AdminCourseController::class, 'delete'])->name('courses.delete');
             Route::resource('courses', AdminCourseController::class);
         });
     });

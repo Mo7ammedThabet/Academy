@@ -49,4 +49,12 @@ class CourseController extends Controller
         $object->save();
         return ['success' => 'Publish Successfully'];
     }
+
+    public function delete(Request $request){
+        $request->validate([
+            'ids' => 'required|array',  
+        ]);
+        Course::destroy($request->ids);
+       return [];
+    }
 }
